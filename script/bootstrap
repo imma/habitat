@@ -4,7 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  ${NOSUDO} sudo install -o ubuntu -g ubuntu -m 0755 /hab
+  ${NOSUDO} sudo install -o "${USER}" -g "${USER}" -m 0755 /hab
   "$shome/libexec/install.sh" -v "$HABITAT_VERSION"
 }
 
