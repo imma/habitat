@@ -4,7 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  uname -a
+  "$shome/libexec/install.sh" -v "$HABITAT_VERSION"
 }
 
 main "$@"
