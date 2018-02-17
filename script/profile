@@ -2,9 +2,7 @@
 
 function _habitat_profile {
   local shome="${_habitat_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
-  PATH="$shome/bin:$shome/exec:$PATH"
-  #export ANSIBLE_ROLES_PATH="$shome/roles${ANSIBLE_ROLES_PATH:+:${ANSIBLE_ROLES_PATH}}"
-  #export ANSIBLE_LIBRARY="$shome/library${ANSIBLE_LIBRARY:+:${ANSIBLE_LIBRARY}}"
+  PATH="$shome/bin:$shome/exec:$BOARD_PATH/hab/bin:$PATH"
 }
 
 _habitat_profile

@@ -269,8 +269,7 @@ install_hab() {
       # fall back to running the older behavior. This can be removed at a
       # future date when we no lnger are worrying about Habitat versions 0.33.2
       # and older. (2017-09-29)
-      ${NOSUDO} sudo "${archive_dir}/hab" pkg binlink "$_ident" hab --force \
-        || ${NOSUDO} sudo "${archive_dir}/hab" pkg binlink "$_ident" hab
+      "${archive_dir}/hab" pkg binlink "$_ident" hab --force -d "${BOARD_PATH}/hab/bin"
       ;;
     *)
       exit_with "Unrecognized sys when installing: ${sys}" 5
