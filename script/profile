@@ -5,6 +5,7 @@ function _habitat_profile {
   PATH="$shome/bin:$shome/exec:$BOARD_PATH/hab/bin:$PATH"
 
   export HAB_BINLINK_DIR="${BOARD_PATH}/hab/bin"
+  export HAB_CACHE_KEY_PATH=/tmp/work/cache/keys
 }
 
 _habitat_profile
