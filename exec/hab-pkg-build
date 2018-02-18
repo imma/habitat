@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+
+  case "$(uname -s)" in
+    Darwin)
+      exec /usr/local/bin/hab pkg build "$@"
+      ;;
+    *)
+      exec "${BOARD_PATH:-${HOME}}/hab/bin/hab" pkg build -D "$@"
+      ;;
+  esac
+}
+
+source sub "$BASH_SOURCE" "$@"
