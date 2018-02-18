@@ -3,6 +3,8 @@
 function _habitat_profile {
   local shome="${_habitat_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$BOARD_PATH/hab/bin:$PATH"
+
+  export HAB_BINLINK_DIR="${BOARD_PATH}/hab/bin"
 }
 
 _habitat_profile
