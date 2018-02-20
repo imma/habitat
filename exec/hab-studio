@@ -4,6 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
   if [[ "$#" == 0 ]]; then
+    export HAB_STUDIO_SUP=0
     exec hab studio sync
     return 1
   fi
