@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+  bastion:
+    image: imma/habitat
+    restart: always
+    network_mode: bridge
+    command: --ring bastion --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    volumes:
+      - type: volume
+        source: peer
+        target: /peer
+        volume:
+          nocopy: true
+      - type: volume
+        source: keys
+        target: /hab/cache/keys
+        volume:
+          nocopy: true
+volumes:
+  peer:
+  keys:
