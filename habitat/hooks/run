@@ -2,7 +2,7 @@
 
 exec 2>&1
 
-function main {
+main() {
   exec sleep 8640000
 }
 
