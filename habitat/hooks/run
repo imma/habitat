@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash -xe
+
+exec 2>&1
 
 function main {
   exec sleep 8640000
