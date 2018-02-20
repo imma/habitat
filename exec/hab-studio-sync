@@ -3,12 +3,9 @@
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
-  if dsync2 $(pwd) habitat_data imma/ubuntu:rsync; then
-    export HAB_DOCKER_OPTS="-v habitat_data:/hab/studios/src/src"
-    exec hab studio -n enter
-  fi
-
-  return 1
+  dsync2 $(pwd) habitat_data imma/ubuntu:rsync || true
+  export HAB_DOCKER_OPTS="-v habitat_data:/hab/studios/src/src"
+  exec hab studio -n enter
 }
 
 source sub "$BASH_SOURCE" "$@"
