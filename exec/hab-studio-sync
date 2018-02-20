@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+
+  if dsync $(pwd) habitat_data imma/ubuntu; then
+    exec hab studio enter
+  fi
+
+  return 1
+}
+
+source sub "$BASH_SOURCE" "$@"
