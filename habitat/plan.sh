@@ -9,8 +9,6 @@ pkg_source=nosuchfile.tgz
 pkg_deps=(
 )
 pkg_build_deps=(
-  core/docker
-  core/git
 )
 pkg_bin_dirs=(habitat/bin)
 
