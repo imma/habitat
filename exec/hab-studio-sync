@@ -3,8 +3,9 @@
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
-  if dsync $(pwd) habitat_data imma/ubuntu; then
-    exec hab studio enter
+  if dsync2 $(pwd) habitat_data imma/ubuntu; then
+    export HAB_DOCKER_OPTS="-v habitat_data:/hab/studios/src/src"
+    exec hab studio -n enter
   fi
 
   return 1
