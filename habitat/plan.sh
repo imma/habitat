@@ -10,6 +10,8 @@ pkg_deps=(
   core/openssh
   core/git
   core/docker
+  core/packer
+  core/terraform
 )
 pkg_build_deps=(
 )
