@@ -1,6 +1,0 @@
-#!/bin/bash
-
-for a in core/docker core/git core/openssh; do
-  hab pkg install $a
-  hab pkg binlink $a
-done

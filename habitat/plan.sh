@@ -7,10 +7,12 @@ pkg_maintainer="Amanibhavam <iam@defn.sh>"
 pkg_license=('Apache-2.0')
 pkg_source=nosuchfile.tgz
 pkg_deps=(
+  core/openssh
+  core/git
+  core/docker
 )
 pkg_build_deps=(
 )
-pkg_bin_dirs=(habitat/bin)
 
 do_download() {
   return 0
