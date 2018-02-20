@@ -3,8 +3,9 @@
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
-  dsync2 $(pwd) habitat_data imma/ubuntu:rsync || true
-  export HAB_DOCKER_OPTS="-v habitat_data:/hab/studios/src/src"
+  local nm_volume="habitat_data_$(uname -n | perl -pe 's{[^a-zA-Z0-9]+}{_}g')":
+  dsync2 $(pwd) "$nm_volume" imma/ubuntu:rsync || true
+  export HAB_DOCKER_OPTS="-v $nm_volume:/hab/studios/src/src"
   exec hab studio -n enter
 }
 
