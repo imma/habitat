@@ -22,6 +22,8 @@ services:
     restart: always
     network_mode: bridge
     command: --ring bastion --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    depends_on:
+      - bastion_init
     volumes:
       - type: volume
         source: peer
