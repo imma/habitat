@@ -1,1 +1,2 @@
-hab start imma/habitat
+exec hab start imma/habitat
+exit 1
