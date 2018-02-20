@@ -7,7 +7,10 @@ function main {
   local nm_volume="habitat_data_$(uname -n | perl -pe 'chomp; s{[^a-zA-Z0-9]+}{_}g')"
   dsync2 $(pwd) "$nm_volume" imma/ubuntu:rsync || true
   export HAB_DOCKER_OPTS="-v $nm_volume:/hab/studios/src/src"
-  hab studio -n enter
+  if [[ "$#" == 0 ]]; then
+    set -- enter
+  fi
+  hab studio -n "$@"
   docker run -v "$nm_volume:/sync" imma/ubuntu:rsync tar cfz - -C /sync results | tar xvfz -
   return 1
 }
