@@ -31,6 +31,13 @@ services:
     command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
     depends_on:
       - hello_init
+    ports:
+      - 3000
+    labels:
+      SERVICE_3000_CHECK_TCP: "true"
+      SERVICE_3000_CHECK_INTERVAL: "60s"
+      SERVICE_3000_NAME: "hello"
+      SERVICE_3000_TAGS: "urlprefix-hello.*/"
     volumes:
       - type: volume
         source: peer
