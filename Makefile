@@ -18,4 +18,8 @@ health:
 	http http://$(shell docker exec habitat_hello_init_1 hostname -i):9631/butterfly | jq '.member.health'
 
 quickly:
-	$(MAKE) build upload export pkg=$(shell ls -thd results/*hart | head -1)
+	$(MAKE) build 
+	$(MAKE) quickly_
+
+quickly_:
+	$(MAKE) export pkg=$(shell ls -thd results/*hart | head -1)
