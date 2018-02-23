@@ -6,6 +6,13 @@ services:
     restart: always
     network_mode: bridge
     command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    port:
+      - 3000
+    labels:
+      SERVICE_3000_CHECK_TCP: "true"
+      SERVICE_3000_CHECK_INTERVAL: "60s"
+      SERVICE_3000_NAME: "hello"
+      SERVICE_3000_TAGS: "urlprefix-hello.*/"
     volumes:
       - type: volume
         source: peer
@@ -17,11 +24,6 @@ services:
         target: /hab/cache/keys
         volume:
           nocopy: true
-    labels:
-      SERVICE_3000_CHECK_TCP: "true"
-      SERVICE_3000_CHECK_INTERVAL: "60s"
-      SERVICE_3000_NAME: "hello"
-      SERVICE_3000_TAGS: "urlprefix-hello.*/"
   hello:
     image: imma/habitat
     restart: always
