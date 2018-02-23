@@ -17,6 +17,11 @@ services:
         target: /hab/cache/keys
         volume:
           nocopy: true
+		labels:
+      SERVICE_3000_CHECK_TCP: "true"
+      SERVICE_3000_CHECK_INTERVAL: "60s"
+      SERVICE_3000_NAME: "hello"
+      SERVICE_3000_TAGS: "urlprefix-hello.*/"
   hello:
     image: imma/habitat
     restart: always
