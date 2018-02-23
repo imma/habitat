@@ -17,7 +17,7 @@ services:
         target: /hab/cache/keys
         volume:
           nocopy: true
-		labels:
+    labels:
       SERVICE_3000_CHECK_TCP: "true"
       SERVICE_3000_CHECK_INTERVAL: "60s"
       SERVICE_3000_NAME: "hello"
