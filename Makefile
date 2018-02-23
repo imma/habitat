@@ -9,7 +9,7 @@ export:
 
 up:
 	docker-compose build
-	docker-compose up --scale hello_init=1 --scale hello=4
+	docker-compose up $(compose)
 
 down:
 	docker-compose down
