@@ -8,7 +8,7 @@ export:
 	-hab studio clone run hab pkg export docker $(pkg)
 
 up:
-	docker-compose up --scale hello_init=1 --scale hello=0
+	docker-compose build
 	docker-compose up --scale hello_init=1 --scale hello=4
 
 down:
