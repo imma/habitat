@@ -3,7 +3,7 @@
 exec 2>&1
 
 main() {
-  exec sleep 8640000
+  exec node "${pkg_prefix}/index.js"
 }
 
 main "$@"

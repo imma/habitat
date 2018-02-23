@@ -12,6 +12,7 @@ pkg_deps=(
   core/docker
   core/packer
   core/terraform
+  core/node
 )
 pkg_build_deps=(
 )
@@ -29,7 +30,7 @@ do_unpack() {
 }
 
 do_prepare() {
-  echo "prefix is $pkg_prefix"
+  return 0
 }
 
 do_build() {
@@ -37,5 +38,5 @@ do_build() {
 }
 
 do_install() {
-  echo "installing to $pkg_prefix"
+  cp index.js "$pkg_prefix/"
 }
