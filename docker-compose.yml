@@ -1,11 +1,11 @@
 version: '3.2'
 
 services:
-  bastion_init:
-    build: bastion
+  hello_init:
+    build: hello
     restart: always
     network_mode: bridge
-    command: --ring bastion --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
     volumes:
       - type: volume
         source: peer
@@ -17,13 +17,13 @@ services:
         target: /hab/cache/keys
         volume:
           nocopy: true
-  bastion:
+  hello:
     image: imma/habitat
     restart: always
     network_mode: bridge
-    command: --ring bastion --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
     depends_on:
-      - bastion_init
+      - hello_init
     volumes:
       - type: volume
         source: peer

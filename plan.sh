@@ -7,11 +7,6 @@ pkg_maintainer="Amanibhavam <iam@defn.sh>"
 pkg_license=('Apache-2.0')
 pkg_source=nosuchfile.tgz
 pkg_deps=(
-  core/openssh
-  core/git
-  core/docker
-  core/packer
-  core/terraform
   core/node
 )
 pkg_build_deps=(
@@ -38,5 +33,5 @@ do_build() {
 }
 
 do_install() {
-  cp index.js "$pkg_prefix/"
+  cp /src/index.js "$pkg_prefix/"
 }
