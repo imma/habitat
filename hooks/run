@@ -3,7 +3,7 @@
 exec 2>&1
 
 main() {
-  exec node "${pkg_prefix}/index.js"
+  exec node "{{pkg.path}}/index.js"
 }
 
 main "$@"
