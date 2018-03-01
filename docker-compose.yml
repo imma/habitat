@@ -5,7 +5,7 @@ services:
     build: hello
     restart: always
     network_mode: bridge
-    command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    command: --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
     ports:
       - "9631"
     labels:
@@ -28,7 +28,7 @@ services:
     image: imma/habitat
     restart: always
     network_mode: bridge
-    command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    command: --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
     volumes:
       - type: volume
         source: peer
@@ -44,7 +44,7 @@ services:
     image: imma/habitat
     restart: always
     network_mode: bridge
-    command: --ring hello --peer-watch-file /peer/peer-watch-file.txt --group hello
+    command: --peer-watch-file /peer/peer-watch-file.txt --group hello
     depends_on:
       - init
     env_file:
@@ -76,7 +76,7 @@ services:
     image: imma/habitat
     restart: always
     network_mode: bridge
-    command: --ring hello --peer-watch-file /peer/peer-watch-file.txt --group goodbye
+    command: --peer-watch-file /peer/peer-watch-file.txt --group goodbye
     depends_on:
       - init
     env_file:
