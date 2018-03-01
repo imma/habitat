@@ -6,6 +6,8 @@ services:
     restart: always
     network_mode: bridge
     command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    ports:
+      - "9631:9631"
     volumes:
       - type: volume
         source: peer
@@ -18,7 +20,7 @@ services:
         volume:
           nocopy: true
   peer:
-    image: imma/habit
+    image: imma/habitat
     restart: always
     network_mode: bridge
     command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
