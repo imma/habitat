@@ -7,7 +7,12 @@ services:
     network_mode: bridge
     command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
     ports:
-      - "9631:9631"
+      - "9631"
+    labels:
+      SERVICE_9631_CHECK_TCP: "true"
+      SERVICE_9631_CHECK_INTERVAL: "60s"
+      SERVICE_9631_NAME: "habitat"
+      SERVICE_9631_TAGS: "urlprefix-habitat.*/"
     volumes:
       - type: volume
         source: peer
