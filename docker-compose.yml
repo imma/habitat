@@ -1,11 +1,45 @@
 version: '3.2'
 
 services:
-  hello_init:
+  init:
     build: hello
     restart: always
     network_mode: bridge
     command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    volumes:
+      - type: volume
+        source: peer
+        target: /peer
+        volume:
+          nocopy: true
+      - type: volume
+        source: keys
+        target: /hab/cache/keys
+        volume:
+          nocopy: true
+  peer:
+    image: imma/habit
+    restart: always
+    network_mode: bridge
+    command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    volumes:
+      - type: volume
+        source: peer
+        target: /peer
+        volume:
+          nocopy: true
+      - type: volume
+        source: keys
+        target: /hab/cache/keys
+        volume:
+          nocopy: true
+  hello:
+    image: imma/habitat
+    restart: always
+    network_mode: bridge
+    command: --ring hello --peer-watch-file /peer/peer-watch-file.txt
+    depends_on:
+      - init
     env_file:
       - .env
     ports:
@@ -26,13 +60,13 @@ services:
         target: /hab/cache/keys
         volume:
           nocopy: true
-  hello:
+  goodbye:
     image: imma/habitat
     restart: always
     network_mode: bridge
-    command: --ring hello --permanent-peer --peer-watch-file /peer/peer-watch-file.txt
+    command: --ring hello --peer-watch-file /peer/peer-watch-file.txt
     depends_on:
-      - hello_init
+      - init
     env_file:
       - .env
     ports:
@@ -40,8 +74,8 @@ services:
     labels:
       SERVICE_3000_CHECK_TCP: "true"
       SERVICE_3000_CHECK_INTERVAL: "60s"
-      SERVICE_3000_NAME: "hello"
-      SERVICE_3000_TAGS: "urlprefix-hello.*/"
+      SERVICE_3000_NAME: "goodbye"
+      SERVICE_3000_TAGS: "urlprefix-goodbye.*/"
     volumes:
       - type: volume
         source: peer

@@ -1,4 +1,4 @@
-pkg := $(shell ls -thd results/*hart | head -1)
+pkg := $(shell ls -thd results/*hart 2>/dev/null | head -1)
 
 studio:
 	hab studio clone
@@ -15,7 +15,7 @@ export:
 up:
 	$(MAKE) down
 	docker-compose build
-	docker-compose up $(compose)
+	docker-compose up --scale peer=2 $(compose)
 
 down:
 	docker-compose down
