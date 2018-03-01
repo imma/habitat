@@ -7,10 +7,6 @@ pkg_deps=(
   core/node
 )
 
-do_prepare() {
-  return 0
-}
-
 do_build() {
   return 0
 }
