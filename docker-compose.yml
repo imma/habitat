@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   init:
-    build: hello
+    build: habitat
     restart: always
     network_mode: bridge
     command: --permanent-peer --peer-watch-file /peer/peer-watch-file.txt

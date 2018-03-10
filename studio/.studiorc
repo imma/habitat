@@ -1,2 +1,0 @@
-exec hab start imma/habitat
-exit 1

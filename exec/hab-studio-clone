@@ -6,7 +6,7 @@ function main {
   export HAB_STUDIO_SUP=0
   local nm_volume="habitat_data_$(uname -n | perl -pe 'chomp; s{[^a-zA-Z0-9]+}{_}g')"
   dsync "$(pwd):/sync" "$nm_volume" imma/ubuntu:rsync --delete --exclude README.md --exclude .git
-  export HAB_DOCKER_OPTS="-v $nm_volume:/hab/studios/src/src"
+  export HAB_DOCKER_OPTS="-v $nm_volume:/hab/studios/src/src --privileged"
   if [[ "$#" == 0 ]]; then
     set -- enter
   fi
